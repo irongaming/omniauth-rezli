@@ -7,8 +7,8 @@ module OmniAuth
 
       option :client_options, {
         :site => "https://www.rezli.com",
-        :authorize_url => "/oauth2/authorize",
-        :token_url => "/oauth2/token",
+        :authorize_url => "/oauth/authorize",
+        :token_url => "/oauth/token",
       }
 
       uid { raw_info["id"] }
