@@ -11,7 +11,7 @@ module OmniAuth
         :token_url => "/oauth/token",
       }
 
-      uid { raw_info["id"] }
+      uid { raw_info["slug"] }
 
       info do
         prune!({
@@ -26,7 +26,11 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/me.json').parsed
+        @raw_info ||= access_token.get('/profile/me.json').parsed
+      end
+
+      def callback_url
+        full_host + script_name + callback_path
       end
 
       private
